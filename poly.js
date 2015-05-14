@@ -485,7 +485,7 @@ game.render = function() {
   }
 	if (game.debug.open) {
     ctx.fillStyle = "rgba(0, 0, 0, 1)";
-    ctx.font = "15px Verdana";
+    ctx.font = "15px Ubuntu";
     ctx.fillText("x: " + game.player.x + ", y: " + game.player.y + " score: " + game.player.score, 10, 20);
     ctx.fillText("speed: " + game.player.calcSpeed, 10, 40);
     ctx.fillText("map: " + game.map.name, 10, 60);
