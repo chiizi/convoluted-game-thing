@@ -4,6 +4,12 @@
   font-weight: 300;
   src: url("fonts/raleway.woff2") format("woff2");
 }
+@font-face {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 400;
+  src: url("fonts/ubuntu.woff") format("woff");
+}
 body {
   margin: 0;
 }
