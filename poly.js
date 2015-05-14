@@ -429,16 +429,6 @@ game.render = function() {
   game.renderMap(game.map);
   ctx.fillStyle = "rgba(" + game.player.color.join(", ") + ")";
 	ctx.fillRect(game.player.x, game.player.y, game.player.width, game.player.width);
-	if (game.map == game.maps.bedroom) {
-	  ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
-	  ctx.font = "15px Verdana";
-	  ctx.fillText("Arrow keys to move", canvas.width / 2 - 80, canvas.height / 2);
-	}
-	if (game.map == game.maps.upstairsHall) {
-	  ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
-	  ctx.font = "15px Verdana";
-	  ctx.fillText("Made by hans.", canvas.width / 2 - 50, canvas.height / 2);
-	}
 	if (game.invIsOpen) {
     ctx.shadowBlur = 16;
     ctx.shadowColor = "#fff";
