@@ -443,6 +443,13 @@ game.render = function() {
       ctx.fillStyle = "rgba(160, 160, 160, 0.6)";
       ctx.fillRect((canvas.width - 288) / 2 + 60 * i + 8, (canvas.height - 48) / 2 + 8, 32, 32);
       ctx.drawImage(inv32[i], (canvas.width - 288) / 2 + 60 * i + 8, (canvas.height - 48) / 2 + 8);
+      if (game.objsTouching(mouse, {x: (canvas.width - 288) / 2 + 60 * i, y: (canvas.height - 48) / 2, width: 48, height: 48})) {
+        ctx.fillStyle = "#000";
+        ctx.fillRect(mouse.x, mouse.y - 25, ctx.measureText(game.getItem(game.player.inv[i].id).name).width + 8, 20);
+        ctx.fillStyle = "#0f7";
+        ctx.font = "12px Ubuntu";
+        ctx.fillText(game.getItem(game.player.inv[i].id).name, mouse.x + 4, mouse.y - 12);
+      }
     }
     //ctx.fillStyle = "rgba(0, 0, 0, 0.6)";
     //ctx.fillRect(80, 80, (canvas.height - 160) / 2 - 8, (canvas.height - 160) / 2 - 8);
@@ -476,9 +483,11 @@ game.render = function() {
 	if (game.debug.open) {
     ctx.fillStyle = "rgba(0, 0, 0, 1)";
     ctx.font = "15px Ubuntu";
-    ctx.fillText("x: " + game.player.x + ", y: " + game.player.y + " score: " + game.player.score, 10, 20);
+    ctx.fillText("x: " + game.player.x + ", y: " + game.player.y + ", score: " + game.player.score, 10, 20);
     ctx.fillText("speed: " + game.player.calcSpeed, 10, 40);
     ctx.fillText("map: " + game.map.name, 10, 60);
+    ctx.fillText("mouse-x: " + mouse.x + ", mouse-y: " + mouse.y, 10, 80);
+    ctx.fillText("mousedown: " + mouse.down, 10, 100);
 	}
 };
 
