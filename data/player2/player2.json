@@ -1,0 +1,8 @@
+{
+  "type": "player",
+  "number": 2,
+  "name": "Karl",
+  "sprites": "/data/player2/sprites.json",
+  "preview": "/assets/player2.png",
+  "moveset": "/data/playerTemp/move.json"
+}
