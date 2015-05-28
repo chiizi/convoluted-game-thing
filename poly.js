@@ -430,6 +430,7 @@ game.render = function() {
   ctx.fillStyle = "rgba(" + game.player.color.join(", ") + ")";
 	ctx.fillRect(game.player.x, game.player.y, game.player.width, game.player.width);
 	if (game.invIsOpen) {
+	  var tooltip = null;
     ctx.shadowBlur = 16;
     ctx.shadowColor = "#fff";
     ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
@@ -444,11 +445,19 @@ game.render = function() {
       ctx.fillRect((canvas.width - 288) / 2 + 60 * i + 8, (canvas.height - 48) / 2 + 8, 32, 32);
       ctx.drawImage(inv32[i], (canvas.width - 288) / 2 + 60 * i + 8, (canvas.height - 48) / 2 + 8);
       if (game.objsTouching(mouse, {x: (canvas.width - 288) / 2 + 60 * i, y: (canvas.height - 48) / 2, width: 48, height: 48})) {
+        tooltip = i;
         ctx.fillStyle = "#000";
         ctx.fillRect(mouse.x, mouse.y - 25, ctx.measureText(game.getItem(game.player.inv[i].id).name).width + 8, 20);
         ctx.fillStyle = "#0f7";
         ctx.font = "12px Ubuntu";
         ctx.fillText(game.getItem(game.player.inv[i].id).name, mouse.x + 4, mouse.y - 12);
+      }
+      if (tooltip !== null) {
+        ctx.fillStyle = "#000";
+        ctx.fillRect(mouse.x, mouse.y - 25, ctx.measureText(game.getItem(game.player.inv[tooltip].id).name).width + 8, 20);
+        ctx.fillStyle = "#0f7";
+        ctx.font = "12px Ubuntu";
+        ctx.fillText(game.getItem(game.player.inv[tooltip].id).name, mouse.x + 4, mouse.y - 12);
       }
     }
     //ctx.fillStyle = "rgba(0, 0, 0, 0.6)";
